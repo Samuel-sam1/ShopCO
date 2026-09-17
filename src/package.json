@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "flowbite": "^4.0.2",
+    "tailwindcss": "^4.3.3"
+  },
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
+  }
+}
