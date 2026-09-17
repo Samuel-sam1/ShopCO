@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
+    <link href="./output.css" rel="stylesheet" />
+</head>
+<body class="bg-white text-black">
+  <!-- HEADER -->
+  <header class="border-b border-black/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-20 flex items-center justify-between">
+        <!-- Logo -->
+        <a
+          href="index.html"
+          class="text-2xl sm:text-3xl font-bold tracking-widest"
+        >
+          SHOP.CO
+        </a>
+        <!-- Cart -->
+      <a id="cartBtn" href="cart.html" class=" p-1 hover:text-gray-600 relative " aria-label="Shopping Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+            class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1-1.5 0Z" />
+          </svg>
+          <span id="cart-count" class="  hidden  absolute  -top-2  -right-3  bg-black  text-white  text-xs  pl-1  w-5  h-5  rounded-full  items-center  justify-center">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+  <!-- PRODUCT DETAILS -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <div class="flex items-center gap-2 text-sm text-black/50 mb-8">
+      <a
+        href="index.html"
+        class="hover:text-black transition"
+      >
+        Home
+      </a>
+      <span>/</span>
+      <span id="breadcrumb-product">
+        Product
+      </span>
+    </div>
+    <!-- Product -->
+    <section
+      id="product-details"
+      class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14"
+    >
+      <!-- Javascript will insert the product here -->
+    </section>
+  </main>
+ <script src="products.js"></script>
+<script src="utils.js"></script>
+<script src="cart.js"></script>
+<script src="productdetails.js"></script>
+</body>
+</html>

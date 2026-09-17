@@ -6,11 +6,11 @@
   <link href="./output.css" rel="stylesheet" />
 </head>
 <body>
-  <div class="bg-black text-white text-xs sm:text-sm py-2 px-4 text-center relative font-sans">
+  <div id="promo-banner" class="bg-black text-white text-xs sm:text-sm py-2 px-4 text-center relative font-sans">
     <p>Sign up and get 20% off your first order.
       <a href="#" class="underline font-medium hover:text-gray-300">Sign Up Now</a>
     </p>
-    <button class="absolute right-4 top-1/2 -translate-y-1/2 hidden sm:block text-white hover:text-gray-300"
+    <button id="close-banner" class="absolute right-4 top-1/2 -translate-y-1/2 hidden sm:block text-white hover:text-gray-300"
       aria-label="Close banner">
       <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="w-4 h-4">
@@ -178,8 +178,7 @@
               Shop Now
             </a>
           </div>
-          <div
-            class="flex flex-wrap justify-center sm:justify-start gap-y-6 gap-x-8 md:gap-x-12 border-t border-black/10 pt-6 sm:pt-8">
+          <di class="flex flex-wrap justify-center sm:justify-start gap-y-6 gap-x-8 md:gap-x-12 border-t border-black/10 pt-6 sm:pt-8">
             <div>
               <h3 class="text-2xl sm:text-4xl font-bold text-black" id="stat-brands">
                 200+
@@ -202,7 +201,7 @@
               </h3>
               <p class="text-xs sm:text-sm text-black/60">Happy Customers</p>
             </div>
-          </div>
+          </di>
         </div>
         <div class="relative w-full h-87.5 sm:h-125 lg:h-162.5 flex items-end lg:items-center justify-center">
           <div class="absolute top-[35%] left-[10%] md:left-[15%] lg:left-[5%] ">
@@ -291,9 +290,10 @@
       </button>
     </div>
   </section>
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <section class="max-w-7xl mx-aut
+  o px-4 sm:px-6 lg:px-8 py-12">
     <div class="w-full bg-[#F0EEED] rounded-[20px] md:rounded-[40px] px-6 py-10 md:p-16 lg:p-20">
-      <h2
+      <h2 
         class="text-3xl sm:text-4xl lg:text-5xl font-black text-center text-black mb-7 md:mb-16 tracking-tight leading-none">
         BROWSE BY DRESS STYLE
       </h2>
@@ -606,8 +606,9 @@
                 class="w-12 h-7 bg-white border border-black/5 rounded-[5px] flex items-center justify-center font-serif text-[10px] font-black italic tracking-tighter text-[#1A1F71] select-none">
                 VISA</div>
             </div>
-            <script src="products.js"></script>
-            <script src="cart.js"></script>
-            <script src="script.js"></script>
+<script src="products.js"></script>
+<script src="utils.js"></script>
+<script src="cart.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

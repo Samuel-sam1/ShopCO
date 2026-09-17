@@ -129,6 +129,7 @@ function renderCart() {
             class="text-black/40 hover:text-red-500 transition"
             title="Remove"
           >
+            ×
           </button>
         </div>
         <div class="flex items-center justify-between mt-auto pt-4">
