@@ -126,7 +126,7 @@ function renderCart() {
           </div>
           <button
             onclick="removeFromCart('${product.id}')"
-            class="text-black/40 hover:text-red-500 transition"
+            class="text-black/40 hover:text-red-500 transition text-4xl"
             title="Remove"
           >
             ×

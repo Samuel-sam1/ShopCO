@@ -1,20 +1,24 @@
+// PROMO BANNER
 const promoBanner = document.getElementById("promo-banner");
 const closeBanner = document.getElementById("close-banner");
 closeBanner.addEventListener("click", function () {
-    promoBanner.remove();
+  promoBanner.remove();
 });
+
+// PRODUCT DETAILS
 function openProductDetails(productId) {
   window.location.href = `productdetails.html?id=${productId}`;
 }
-const productGrid = document.getElementById('product-grid');
-const topproductGrid = document.getElementById('topproduct-grid');
+// PRODUCT GRID ELEMENTS
+const productGrid = document.getElementById("product-grid");
+const topproductGrid = document.getElementById("topproduct-grid");
+// NORMAL PRODUCTS
 productGrid.innerHTML = products.map(product => {
   return `
     <div 
       class="flex flex-col group relative bg-white p-3 rounded-[20px] shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
       data-id="${product.id}"
     >
-      <!-- PRODUCT IMAGE -->
       <div class="w-full aspect-square bg-[#F0EEED] rounded-[20px] overflow-hidden flex items-center justify-center p-4 mb-4 relative">
         <img 
           src="${product.img}" 
@@ -22,11 +26,9 @@ productGrid.innerHTML = products.map(product => {
           class="w-full h-full object-contain group-hover:scale-102 transition-transform duration-300"
         />
       </div>
-      <!-- PRODUCT NAME -->
       <h3 class="text-base sm:text-lg font-bold text-black truncate mb-1 pr-8">
         ${product.name}
       </h3>
-      <!-- RATING -->
       <div class="flex items-center gap-1.5 mb-2">
         <div class="flex items-center gap-0.5">
           ${generateStars(product.star)}
@@ -35,7 +37,6 @@ productGrid.innerHTML = products.map(product => {
           ${product.star}/<span class="text-black/40">5</span>
         </span>
       </div>
-      <!-- PRICE -->
       <div class="text-xl sm:text-2xl font-bold text-black">
         $${product.price}
         <!-- ADD TO CART BUTTON -->
@@ -63,7 +64,9 @@ productGrid.innerHTML = products.map(product => {
     </div>
   `;
 }).join("");
+// NORMAL PRODUCT CLICK
 productGrid.addEventListener("click", (e) => {
+  // Don't open details if cart button was clicked
   if (e.target.closest(".cartBtn")) {
     return;
   }
@@ -72,9 +75,9 @@ productGrid.addEventListener("click", (e) => {
     return;
   }
   const productId = productCard.dataset.id;
-  window.location.href =
-    `productdetails.html?id=${productId}`;
+  openProductDetails(productId);
 });
+// NORMAL PRODUCT ADD TO CART
 productGrid.addEventListener("click", (e) => {
   const cartButton = e.target.closest(".cartBtn");
   if (!cartButton) {
@@ -84,13 +87,13 @@ productGrid.addEventListener("click", (e) => {
   const productId = cartButton.dataset.id;
   addToCart(productId);
 });
+// TOP PRODUCTS
 topproductGrid.innerHTML = topProducts.map(product => {
   return `
     <div 
       class="flex flex-col relative group cursor-pointer"
       data-id="${product.id}"
     >
-      <!-- Product Image -->
       <div class="w-full aspect-square bg-[#F0EEED] rounded-[20px] overflow-hidden flex items-center justify-center p-4 mb-4">
         <img 
           src="${product.img}" 
@@ -98,11 +101,9 @@ topproductGrid.innerHTML = topProducts.map(product => {
           class="w-full h-full object-contain group-hover:scale-102 transition-transform duration-300"
         />
       </div>
-      <!-- Product Name -->
       <h3 class="text-base sm:text-lg font-bold text-black truncate mb-1">
         ${product.name}
       </h3>
-      <!-- Rating -->
       <div class="flex items-center gap-1.5 mb-2">
         <div class="flex items-center gap-0.5">
           ${generateStars(product.star)}
@@ -111,10 +112,9 @@ topproductGrid.innerHTML = topProducts.map(product => {
           ${product.star}/<span class="text-black/40">5</span>
         </span>
       </div>
-      <!-- Price -->
       <div class="text-xl sm:text-2xl font-bold text-black">
         $${product.price}
-        <!-- Add To Cart -->
+        <!-- ADD TO CART -->
         <button 
           class="topcartBtn cursor-pointer absolute bottom-3 right-3 w-10 h-10 bg-black text-white rounded-full flex items-center justify-center shadow-lg hover:bg-black/80 z-10"
           data-id="${product.id}"
@@ -139,8 +139,9 @@ topproductGrid.innerHTML = topProducts.map(product => {
     </div>
   `;
 }).join("");
+// TOP PRODUCT CLICK + CART 
 topproductGrid.addEventListener("click", (e) => {
-  // If Add to Cart was clicked
+  // Add to cart
   const cartButton = e.target.closest(".topcartBtn");
   if (cartButton) {
     e.stopPropagation();
@@ -148,13 +149,11 @@ topproductGrid.addEventListener("click", (e) => {
     addToCart(productId);
     return;
   }
-  // Otherwise, check if product card was clicked
+  // Product details
   const productCard = e.target.closest("[data-id]");
   if (!productCard) {
     return;
   }
   const productId = productCard.dataset.id;
-  // Go to product details
-  window.location.href =
-    `productdetails.html?id=${productId}`;
+  openProductDetails(productId);
 });

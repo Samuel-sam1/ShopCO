@@ -11,8 +11,7 @@ const product = allProducts.find(
   item => String(item.id) === String(productId)
 );
 // PRODUCT DETAILS CONTAINER
-const productDetailsContainer =
-  document.getElementById("product-details");
+const productDetailsContainer = document.getElementById("product-details");
 // CHECK IF PRODUCT EXISTS
 if (!product) {
   productDetailsContainer.innerHTML = `
