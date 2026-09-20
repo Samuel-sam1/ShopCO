@@ -4,7 +4,8 @@ const productId = urlParams.get("id");
 // COMBINE BOTH PRODUCT ARRAYS
 const allProducts = [
   ...products,
-  ...topProducts
+  ...topProducts,
+  ...alsoLike
 ];
 // FIND THE CLICKED PRODUCT
 const product = allProducts.find(
@@ -43,6 +44,11 @@ function showProduct(product) {
   if (breadcrumb) {
     breadcrumb.textContent = product.name;
   }
+  const tabDescription = document.getElementById("tab-product-description");
+
+if (tabDescription) {
+  tabDescription.textContent = product.description;
+}
   // Render product
   productDetailsContainer.innerHTML = `
     <!-- LEFT SIDE -->
@@ -161,3 +167,103 @@ function setupProductButtons(product) {
     }, 1500);
   });
 }
+const detailsTab = document.getElementById("details-tab");
+const reviewsTab = document.getElementById("reviews-tab");
+const faqTab = document.getElementById("faq-tab");
+const detailsContent = document.getElementById("details-content");
+const reviewsContent = document.getElementById("reviews-content");
+const faqContent = document.getElementById("faq-content");
+function showTab(activeTab, activeContent) {
+  detailsContent.classList.add("hidden");
+  reviewsContent.classList.add("hidden");
+  faqContent.classList.add("hidden");
+  detailsTab.classList.remove("border-black", "text-black");
+  reviewsTab.classList.remove("border-black", "text-black");
+  faqTab.classList.remove("border-black", "text-black");
+  detailsTab.classList.add("border-transparent", "text-black/50");
+  reviewsTab.classList.add("border-transparent", "text-black/50");
+  faqTab.classList.add("border-transparent", "text-black/50");
+  activeContent.classList.remove("hidden");
+  activeTab.classList.remove("border-transparent", "text-black/50");
+  activeTab.classList.add("border-black", "text-black");
+}
+detailsTab.addEventListener("click", () => {
+  showTab(detailsTab, detailsContent);
+});
+reviewsTab.addEventListener("click", () => {
+  showTab(reviewsTab, reviewsContent);
+});
+faqTab.addEventListener("click", () => {
+  showTab(faqTab, faqContent);
+});
+
+const productLike = document.getElementById("product-like");
+// NORMAL PRODUCTS
+productLike.innerHTML = alsoLike.map(product => {
+  return `
+    <div 
+      class="flex flex-col group relative bg-white p-3 rounded-[20px] shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
+      data-id="${product.id}"
+    >
+      <div class="w-full aspect-square bg-[#F0EEED] rounded-[20px] overflow-hidden flex items-center justify-center p-4 mb-4 relative">
+        <img 
+          src="${product.img}" 
+          alt="${product.name}" 
+          class="w-full h-full object-contain group-hover:scale-102 transition-transform duration-300"
+        />
+      </div>
+      <h3 class="text-base sm:text-lg font-bold text-black truncate mb-1 pr-8">
+        ${product.name}
+      </h3>
+      <div class="flex items-center gap-1.5 mb-2">
+        <div class="flex items-center gap-0.5">
+          ${generateStars(product.star)}
+        </div>
+        <span class="text-xs sm:text-sm text-black/60 font-normal">
+          ${product.star}/<span class="text-black/40">5</span>
+        </span>
+      </div>
+      <div class="text-xl sm:text-2xl font-bold text-black">
+        $${product.price}
+        <!-- ADD TO CART BUTTON -->
+        <button 
+          class="likcartBtn cursor-pointer absolute bottom-3 right-3 w-10 h-10 bg-black text-white rounded-full flex items-center justify-center shadow-lg hover:bg-black/80 z-10"
+          data-id="${product.id}"
+          type="button"
+          title="Add to Cart"
+        >
+          <svg 
+            class="w-5 h-5" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  `;
+}).join("");
+productLike.addEventListener("click", (e) => {
+  // Add to cart
+  const cartButton = e.target.closest(".likcartBtn");
+  if (cartButton) {
+    e.stopPropagation();
+    const productId = cartButton.dataset.id;
+    addToCart(productId);
+    return;
+  }
+  // Product details
+  const productCard = e.target.closest("[data-id]");
+  if (!productCard) {
+    return;
+  }
+  const productId = productCard.dataset.id;
+  openProductDetails(productId);
+});

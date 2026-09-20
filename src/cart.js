@@ -7,7 +7,7 @@ function saveCart(cart) {
 }
 function addToCart(productId) {
 const cart = getCart();
-const allProducts = [...products, ...topProducts];
+const allProducts = [...products, ...topProducts, ...alsoLike];
 const product = allProducts.find(
   product => String(product.id) === String(productId)
 );
@@ -75,7 +75,7 @@ function calculateTotals(cart) {
   );
   return {
     subtotal,
-    total: subtotal
+    total: subtotal + 15
   };
 }
 function renderCart() {
