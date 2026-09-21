@@ -4,7 +4,6 @@ const closeBanner = document.getElementById("close-banner");
 closeBanner.addEventListener("click", function () {
   promoBanner.remove();
 });
-
 // PRODUCT DETAILS
 function openProductDetails(productId) {
   window.location.href = `productdetails.html?id=${productId}`;
@@ -157,3 +156,5 @@ topproductGrid.addEventListener("click", (e) => {
   const productId = productCard.dataset.id;
   openProductDetails(productId);
 });
+
+const allProducts = [...products, ...topProducts, ...alsoLike];

@@ -10,7 +10,7 @@ const products = [
     star: 4.5,
     description: "A stylish everyday t-shirt featuring modern tape details. Made with a soft and comfortable fabric, it is perfect for casual outings and everyday wear.",
     type:"T-shirt",
-    style:"casual"
+    style:"Casual"
 
   },
 
@@ -33,7 +33,7 @@ const products = [
     star: 4.5,
     description: "A classic checkered shirt with a modern fit. Easy to style and comfortable to wear, making it a great addition to your casual wardrobe.",
      type:"Shirt",
-    style:"casual"
+    style:"Casual"
   },
 
   {
@@ -44,7 +44,7 @@ const products = [
     star: 5.0,
     description: "A comfortable t-shirt featuring stylish stripes on the sleeves. Designed with a clean and versatile look that works well for everyday outfits.",
      type:"T-shirt",
-    style:"casual"
+    style:"Casual"
   }
 
 ];
@@ -69,7 +69,7 @@ const topProducts = [
     star: 4.0,
     description: "A bold graphic t-shirt designed for those who like to express their style. Its comfortable fit makes it ideal for casual days and relaxed outings.",
     type:"T-shirt",
-    style:"casual"
+    style:"Casual"
   },
 
   {
@@ -133,7 +133,7 @@ const alsoLike = [
     star: 5.0,
     description: "A classic black striped shirt, perfect for adding a touch of elegance to your wardrobe.",
      type:"T-shirt",
-    style:"casual"
+    style:"Casual"
   },
 
 ]

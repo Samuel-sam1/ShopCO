@@ -65,6 +65,7 @@ const header = document.getElementById("header");
       </div>
       <nav class=" hidden lg:flex items-center gap-6 text-base text-black whitespace-nowrap">
         <div class="relative group">
+         <a href="category.html">
           <button class="  flex  items-center  gap-1  hover:text-gray-600  transition-colors  py-2">
             Shop
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
@@ -72,22 +73,13 @@ const header = document.getElementById("header");
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </button>
-          <div class=" absolute left-0 top-full hidden group-hover:block bg-white shadow-lg rounded-xl border border-gray-100 p-4 min-w-40">
-            <a href="#" class=" block px-2 py-1.5 text-sm hover:bg-gray-50 rounded-md ">
-              Men's Apparel
-            </a>
-            <a href="#" class=" block px-2 py-1.5 text-sm hover:bg-gray-50 rounded-md">
-              Women's Apparel
-            </a>
-            <a href="#" class=" block px-2 py-1.5 text-sm hover:bg-gray-50 rounded-md ">
-              New Arrivals
-            </a>
-          </div>
+          </a>
+         
         </div>
-        <a href="#" class="hover:text-gray-600 transition-colors">
+        <a href="#topproduct-grid" class="hover:text-gray-600 transition-colors">
           On Sale
         </a>
-        <a href="#" class="hover:text-gray-600 transition-colors">
+        <a href="#product-grid" class="hover:text-gray-600 transition-colors">
           New Arrivals
         </a>
         <a href="#" class="hover:text-gray-600 transition-colors">
@@ -102,7 +94,8 @@ const header = document.getElementById("header");
               d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.602 10.602Z" />
           </svg>
         </span>
-        <input type="text" placeholder="Search for products..." class="w-full bg-gray-100 text-sm text-black pl-12 pr-4 py-3 rounded-full outline-none focus:ring-1 focus:ring-gray-300 placeholder:text-gray-400 transition-all" />
+       <input id="search-input" type="text" placeholder="Search for products..." class="w-full bg-gray-100 text-sm text-black pl-12 pr-4 py-3 rounded-full outline-none focus:ring-1 focus:ring-gray-300 placeholder:text-gray-400 transition-all"/>
+       <div id="search-results" class="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hidden z-50"></div>
       </div>
       <div class=" flex items-center gap-3 sm:gap-4 text-black">
         <button class=" md:hidden p-1 hover:text-gray-600" aria-label="Search">
@@ -140,3 +133,80 @@ hamburger.addEventListener("click", () => {
 closeMenu.addEventListener("click", () => {
   menu.classList.add("-translate-x-full");
 });
+const searchInput = document.getElementById("search-input");
+const searchResults = document.getElementById("search-results");
+
+const searchProducts = [
+  ...products,
+  ...topProducts,
+  ...alsoLike
+];
+
+searchInput.addEventListener("input", () => {
+  const searchValue = searchInput.value.trim().toLowerCase();
+  // If search box is empty
+  if (searchValue === "") {
+    searchResults.innerHTML = "";
+    searchResults.classList.add("hidden");
+    return;
+  }
+  // Find matching products
+  const matchingProducts = searchProducts.filter(product =>
+    product.name.toLowerCase().includes(searchValue)
+  );
+  // No products found
+  if (matchingProducts.length === 0) {
+    searchResults.innerHTML = `
+      <div class="p-5 text-center text-gray-500">
+        No products found
+      </div>
+    `;
+    searchResults.classList.remove("hidden");
+    return;
+  }
+  // Show products
+  searchResults.innerHTML = matchingProducts
+    .slice(0, 6)
+    .map(product => `
+      <div
+        class="search-product flex items-center gap-4 p-3 hover:bg-gray-100 cursor-pointer transition"
+        data-id="${product.id}"
+      >
+        <div class="w-14 h-14 bg-[#F0EEED] rounded-xl flex items-center justify-center overflow-hidden">
+          <img
+            src="${product.img}"
+            alt="${product.name}"
+            class="w-full h-full object-contain"
+          />
+        </div>
+        <div class="flex-1">
+          <h3 class="font-semibold text-sm">
+            ${product.name}
+          </h3>
+          <p class="text-sm text-gray-500">
+            $${product.price}
+          </p>
+        </div>
+      </div>
+    `)
+    .join("");
+  searchResults.classList.remove("hidden");
+});
+searchResults.addEventListener("click", (e) => {
+  const product = e.target.closest(".search-product");
+  if (!product) return;
+  const productId = product.dataset.id;
+  window.location.href = `productdetails.html?id=${productId}`;
+});
+
+//  <div class=" absolute left-0 top-full hidden group-hover:block bg-white shadow-lg rounded-xl border border-gray-100 p-4 min-w-40">
+//             <a href="#" class=" block px-2 py-1.5 text-sm hover:bg-gray-50 rounded-md ">
+//               Men's Apparel
+//             </a>
+//             <a href="#" class=" block px-2 py-1.5 text-sm hover:bg-gray-50 rounded-md">
+//               Women's Apparel
+//             </a>
+//             <a href="#" class=" block px-2 py-1.5 text-sm hover:bg-gray-50 rounded-md ">
+//               New Arrivals
+//             </a>
+//           </div>

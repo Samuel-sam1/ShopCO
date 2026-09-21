@@ -5,8 +5,337 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="./output.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
     <div id="header" class="bg-white border-b border-gray-100 font-sans sticky top-0 z-50"></div>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="flex flex-col lg:flex-row gap-6">
+    <!-- SIDEBAR -->
+    <aside
+      class="w-full lg:w-75 shrink-0 border border-black/10 rounded-2xl p-5 h-fit"
+    >
+      <!-- Filters Header -->
+      <div class="flex items-center justify-between pb-5">
+        <h2 class="text-2xl font-bold">
+          Filters
+        </h2>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            d="M6 12a.75.75 0 0 1-.75-.75v-7.5a.75.75 0 1 1 1.5 0v7.5A.75.75 0 0 1 6 12ZM18 12a.75.75 0 0 1-.75-.75v-7.5a.75.75 0 0 1 1.5 0v7.5A.75.75 0 0 1 18 12ZM6.75 20.25v-1.5a.75.75 0 0 0-1.5 0v1.5a.75.75 0 0 0 1.5 0ZM18.75 18.75v1.5a.75.75 0 0 1-1.5 0v-1.5a.75.75 0 0 1 1.5 0ZM12.75 5.25v-1.5a.75.75 0 0 0-1.5 0v1.5a.75.75 0 0 0 1.5 0ZM12 21a.75.75 0 0 1-.75-.75v-7.5a.75.75 0 0 1 1.5 0v7.5A.75.75 0 0 1 12 21ZM3.75 15a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0ZM12 11.25a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5ZM15.75 15a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0Z"
+          />
+        </svg>
+      </div>
+      <div class="border-t border-black/10"></div>
+      <!-- TYPE -->
+      <div class="py-5">
+        <div class="flex items-center justify-between mb-5">
+          <h3 class="text-xl font-bold">
+            Type
+          </h3>
+          <span class="text-xl">
+            ⌃
+          </span>
+        </div>
+        <div class="flex flex-col gap-4">
+          <label class="flex items-center justify-between cursor-pointer">
+            <span>T-shirts</span>
+            <input
+              type="checkbox"
+              value="T-shirts"
+              class="type-filter w-5 h-5 accent-black cursor-pointer"
+            >
+          </label>
+          <label class="flex items-center justify-between cursor-pointer">
+            <span>Shirts</span>
+            <input
+              type="checkbox"
+              value="Shirts"
+              class="type-filter w-5 h-5 accent-black cursor-pointer"
+            >
+          </label>
+          <label class="flex items-center justify-between cursor-pointer">
+            <span>Jeans</span>
+            <input
+              type="checkbox"
+              value="Jeans"
+              class="type-filter w-5 h-5 accent-black cursor-pointer"
+            >
+          </label>
+          <label class="flex items-center justify-between cursor-pointer">
+            <span>Shorts</span>
+            <input
+              type="checkbox"
+              value="Shorts"
+              class="type-filter w-5 h-5 accent-black cursor-pointer"
+            >
+          </label>
+          <label class="flex items-center justify-between cursor-pointer">
+            <span>Hoodie</span>
+            <input
+              type="checkbox"
+              value="Hoodie"
+              class="type-filter w-5 h-5 accent-black cursor-pointer"
+            >
+          </label>
+        </div>
+      </div>
+      <div class="border-t border-black/10"></div>
+      <!-- PRICE -->
+      <div class="py-5">
+        <div class="flex items-center justify-between mb-5">
+          <h3 class="text-xl font-bold">
+            Price
+          </h3>
+          <span class="text-xl">
+            ⌃
+          </span>
+        </div>
+        <!-- Price slider area -->
+        <div class="py-5">
+          <input
+            type="range"
+            min="0"
+            max="500"
+            value="500"
+            class="w-full accent-black mt-3"
+          >
+          <div class="flex justify-between mt-3 text-sm text-black/60">
+            <span>$0</span>
+            <span>$500</span>
+          </div>
+        </div>
+        <button
+          class="w-full bg-black text-white py-3 rounded-full font-medium hover:bg-black/80 transition"
+        >
+          Apply
+        </button>
+      </div>
+      <div class="border-t border-black/10"></div>
+      <!-- COLORS -->
+      <div class="py-5">
+        <div class="flex items-center justify-between mb-5">
+          <h3 class="text-xl font-bold">
+            Colors
+          </h3>
+          <span class="text-xl">
+            ⌃
+          </span>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <!-- Brown -->
+          <button
+            type="button"
+            class="w-8 h-8 rounded-full bg-yellow-900 border-2 border-transparent hover:border-black transition"
+          ></button>
+          <!-- Dark Red -->
+          <button
+            type="button"
+            class="w-8 h-8 rounded-full bg-red-900 border-2 border-transparent hover:border-black transition"
+          ></button>
+          <!-- Dark Green -->
+          <button
+            type="button"
+            class="w-8 h-8 rounded-full bg-green-900 border-2 border-transparent hover:border-black transition"
+          ></button>
+          <!-- Dark Blue -->
+          <button
+            type="button"
+            class="w-8 h-8 rounded-full bg-blue-900 border-2 border-transparent hover:border-black transition"
+          ></button>
+          <!-- Yellow -->
+          <button
+            type="button"
+            class="w-8 h-8 rounded-full bg-yellow-500 border-2 border-transparent hover:border-black transition"
+          ></button>
+          <!-- Red -->
+          <button
+            type="button"
+            class="w-8 h-8 rounded-full bg-red-500 border-2 border-transparent hover:border-black transition"
+          ></button>
+          <!-- Green -->
+          <button
+            type="button"
+            class="w-8 h-8 rounded-full bg-green-500 border-2 border-transparent hover:border-black transition"
+          ></button>
+          <!-- Blue -->
+          <button
+            type="button"
+            class="w-8 h-8 rounded-full bg-blue-500 border-2 border-transparent hover:border-black transition"
+          ></button>
+          <!-- Black -->
+          <button
+            type="button"
+            class="w-8 h-8 rounded-full bg-black border-2 border-transparent hover:border-gray-400 transition"
+          ></button>
+        </div>
+      </div>
+      <div class="border-t border-black/10"></div>
+      <!-- DRESS STYLE -->
+      <div class="py-5">
+        <div class="flex items-center justify-between mb-5">
+          <h3 class="text-xl font-bold">
+            Dress Style
+          </h3>
+          <span class="text-xl">
+            ⌃
+          </span>
+        </div>
+        <div class="flex flex-col gap-4">
+          <label class="flex items-center justify-between cursor-pointer">
+            <span>Casual</span>
+            <input
+              type="checkbox"
+              value="Casual"
+              class="style-filter w-5 h-5 accent-black cursor-pointer"
+            >
+          </label>
+          <label class="flex items-center justify-between cursor-pointer">
+            <span>Formal</span>
+            <input
+              type="checkbox"
+              value="Formal"
+              class="style-filter w-5 h-5 accent-black cursor-pointer"
+            >
+          </label>
+          <label class="flex items-center justify-between cursor-pointer">
+            <span>Party</span>
+            <input
+              type="checkbox"
+              value="Party"
+              class="style-filter w-5 h-5 accent-black cursor-pointer"
+            >
+          </label>
+          <label class="flex items-center justify-between cursor-pointer">
+            <span>Gym</span>
+            <input
+              type="checkbox"
+              value="Gym"
+              class="style-filter w-5 h-5 accent-black cursor-pointer"
+            >
+          </label>
+        </div>
+      </div>
+      <!-- Clear filters -->
+      <button
+        id="clear-filters"
+        type="button"
+        class="w-full bg-black text-white py-3 rounded-full font-medium hover:bg-black/80 transition"
+      >
+        Clear Filters
+      </button>
+    </aside>
+    <!-- RIGHT SIDE / PRODUCTS -->
+    <main class="flex-1 min-w-0">
+      <!-- Heading -->
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h1
+            id="category-title"
+            class="text-3xl sm:text-4xl font-bold"
+          >
+            All Products
+          </h1>
+          <p
+            id="product-count"
+            class="text-sm text-black/50 mt-1"
+          >
+            Showing Products
+          </p>
+        </div>
+        <!-- Sort -->
+        <div class="hidden sm:flex items-center gap-2">
+          <span class="text-sm text-black/50">
+            Sort by:
+          </span>
+          <select
+            class="bg-transparent font-medium text-sm outline-none cursor-pointer"
+          >
+            <option>Most Popular</option>
+            <option>Newest</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+      <!-- ALL PRODUCTS WILL RENDER HERE -->
+      <div
+        id="category-product-grid"
+        class="grid grid-cols-2 md:grid-cols-3 gap-x-4 sm:gap-x-6 gap-y-8"
+      >
+        <!--
+          Your JavaScript will render:
+          allProducts.map(product => ...)
+          inside this div.
+        -->
+      </div>
+      <!-- No products -->
+      <div
+        id="no-products"
+        class="hidden text-center py-20"
+      >
+        <h2 class="text-2xl font-bold">
+          Sorry, nothing here...
+        </h2>
+        <p class="text-black/50 mt-2">
+          Try changing your filters.
+        </p>
+      </div>
+      <!-- Pagination -->
+      <div
+        class="flex items-center justify-between border-t border-black/10 mt-10 pt-6"
+      >
+        <button
+          class="border border-black/10 rounded-full px-5 py-2.5 text-sm hover:bg-black hover:text-white transition"
+        >
+          ← Previous
+        </button>
+        <div class="hidden sm:flex items-center gap-2">
+          <button
+            class="w-9 h-9 rounded-lg bg-black text-white"
+          >
+            1
+          </button>
+          <button
+            class="w-9 h-9 rounded-lg hover:bg-black/5"
+          >
+            2
+          </button>
+          <button
+            class="w-9 h-9 rounded-lg hover:bg-black/5"
+          >
+            3
+          </button>
+          <span>
+            ...
+          </span>
+          <button
+            class="w-9 h-9 rounded-lg hover:bg-black/5"
+          >
+            10
+          </button>
+        </div>
+        <button
+          class="border border-black/10 rounded-full px-5 py-2.5 text-sm hover:bg-black hover:text-white transition"
+        >
+          Next →
+        </button>
+      </div>
+    </main>
+  </div>
+</section>
+<div id="footer"></div>
+<script src="products.js"></script>
+<script src="utils.js"></script>
+<script src="cart.js"></script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="category.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
